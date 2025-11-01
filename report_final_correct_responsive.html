@@ -1,12 +1,13 @@
 <!DOCTYPE html>
-<html lang="fa" dir="rtl">
+
+<html dir="rtl" lang="fa">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>گزارش تحلیلی WIP و فروش - شهریور و مهر ۱۴۰۴</title>
-    <link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
-    <style>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>گزارش تحلیلی WIP و فروش - شهریور و مهر ۱۴۰۴</title>
+<link href="https://cdn.jsdelivr.net/gh/rastikerdar/vazirmatn@v33.003/Vazirmatn-font-face.css" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<style>
         * {
             margin: 0;
             padding: 0;
@@ -21,7 +22,7 @@
         }
         
         .container {
-            max-width: 1400px;
+            max-width: 1500px;
             margin: 0 auto;
             background: white;
             border-radius: 25px;
@@ -34,24 +35,6 @@
             color: white;
             padding: 60px 40px;
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .header::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            animation: pulse 15s infinite;
-        }
-        
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.1); opacity: 0.8; }
         }
         
         .header h1 {
@@ -59,16 +42,12 @@
             font-weight: 900;
             margin-bottom: 20px;
             text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
-            position: relative;
-            z-index: 1;
         }
         
         .header p {
             font-size: 1.4em;
             opacity: 0.95;
             margin: 8px 0;
-            position: relative;
-            z-index: 1;
         }
         
         .content {
@@ -77,50 +56,31 @@
         
         .summary-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
             margin-bottom: 50px;
         }
         
         .summary-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
             padding: 40px;
             border-radius: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.12);
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: all 0.4s ease;
             border: 3px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .summary-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(90deg, #667eea, #764ba2);
         }
         
         .summary-card:hover {
-            transform: translateY(-12px) scale(1.02);
-            border-color: #667eea;
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
         }
         
-        .summary-card.critical {
-            background: linear-gradient(135deg, #fc5c7d 0%, #6a82fb 100%);
-            color: white;
+        .summary-card.warning {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
         }
         
         .summary-card.success {
             background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
             color: white;
-        }
-        
-        .summary-card.warning {
-            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
         }
         
         .summary-card h3 {
@@ -134,7 +94,6 @@
             font-size: 3.5em;
             font-weight: 900;
             margin-bottom: 10px;
-            line-height: 1;
         }
         
         .summary-card .label {
@@ -158,17 +117,12 @@
             gap: 18px;
         }
         
-        .section-title .icon {
-            font-size: 1.3em;
-        }
-        
         .chart-container {
             background: #f8f9fa;
             padding: 40px;
             border-radius: 20px;
             margin-bottom: 40px;
             box-shadow: 0 6px 20px rgba(0,0,0,0.1);
-            border: 2px solid #e2e8f0;
         }
         
         table {
@@ -199,14 +153,9 @@
             text-align: right;
         }
         
-        tbody tr {
-            transition: all 0.3s ease;
-        }
-        
         tbody tr:hover {
             background: #f7fafc;
             transform: scale(1.01);
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
         }
         
         tbody tr:nth-child(even) {
@@ -223,38 +172,12 @@
             font-weight: 800;
         }
         
-        .alert {
-            background: linear-gradient(135deg, #fff5f5 0%, #fed7d7 100%);
-            border-right: 6px solid #f87171;
-            padding: 30px;
-            border-radius: 15px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 15px rgba(248, 113, 113, 0.2);
-        }
-        
-        .alert-title {
-            font-weight: 800;
-            color: #991b1b;
-            margin-bottom: 15px;
-            font-size: 1.4em;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-        
-        .alert p {
-            color: #7f1d1d;
-            font-size: 1.1em;
-            line-height: 1.9;
-        }
-        
         .info-box {
             background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
             border-right: 6px solid #3b82f6;
             padding: 30px;
             border-radius: 15px;
             margin-bottom: 40px;
-            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.2);
         }
         
         .info-box-title {
@@ -276,7 +199,6 @@
             border-radius: 20px;
             margin-top: 50px;
             border: 3px solid #22c55e;
-            box-shadow: 0 6px 20px rgba(34, 197, 94, 0.2);
         }
         
         .recommendations h3 {
@@ -297,7 +219,6 @@
             position: relative;
             color: #15803d;
             font-size: 1.1em;
-            line-height: 1.7;
         }
         
         .recommendations li:before {
@@ -314,7 +235,6 @@
             color: white;
             text-align: center;
             padding: 35px;
-            font-size: 1em;
         }
         
         .badge {
@@ -323,7 +243,6 @@
             border-radius: 25px;
             font-size: 0.9em;
             font-weight: 700;
-            margin-right: 6px;
         }
         
         .badge-critical {
@@ -338,11 +257,6 @@
         
         .badge-success {
             background: #10b981;
-            color: white;
-        }
-        
-        .badge-info {
-            background: #3b82f6;
             color: white;
         }
         
@@ -367,376 +281,387 @@
             line-height: 1.8;
         }
     
-/* ===== Mobile Responsiveness (keeps design, optimizes layout) ===== */
-@media (max-width: 1024px) {
-  .content { padding: 32px; }
-  .header { padding: 38px 24px; }
-  .header h1 { font-size: 2.2em; }
-  .header p { font-size: 1.05em; }
-  .section-title { font-size: 1.7em; }
-  .summary-card .value { font-size: 2.6em; }
-  table thead th, table tbody td { padding: 14px; }
+@media (max-width: 992px) {
+    body { padding: 15px; }
+    .header { padding: 30px 20px; }
+    .header h1 { font-size: 2em; }
+    .header p { font-size: 1em; }
+    .content { padding: 25px; }
+    table, th, td { font-size: 0.9em; }
+    .summary-card { padding: 25px; }
 }
-@media (max-width: 768px) {
-  body { padding: 16px; }
-  .container { border-radius: 16px; }
-  .header { padding: 28px 18px; }
-  .header h1 { font-size: 1.8em; line-height: 1.3; }
-  .header p { font-size: 0.98em; }
-  .content { padding: 20px; }
-  .summary-grid { grid-template-columns: 1fr; gap: 16px; }
-  .summary-card { padding: 18px; }
-  .summary-card .value { font-size: 2.2em; }
-  .section { margin-bottom: 36px; }
-  .section-title { font-size: 1.35em; padding-bottom: 10px; gap: 10px; }
-  .chart-container { padding: 16px; }
-  table { display: block; width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  thead { position: sticky; top: 0; z-index: 1; }
-  th { font-size: 0.92em; padding: 12px; }
-  td { font-size: 0.9em; padding: 12px; white-space: nowrap; }
-  .alert, .info-box, .recommendations, .key-finding { padding: 16px; border-radius: 12px; }
-  .recommendations li { font-size: 0.95em; padding: 10px 0 10px 0; }
-  .footer { padding: 18px; font-size: 0.92em; }
+@media (max-width: 600px) {
+    .summary-grid { grid-template-columns: 1fr; }
+    .section-title { font-size: 1.5em; }
+    th, td { padding: 10px; }
+    .chart-container { padding: 20px; }
 }
-@media (max-width: 420px) {
-  .header h1 { font-size: 1.6em; }
-  .header p { font-size: 0.92em; }
-  .summary-card .value { font-size: 2em; }
-  th, td { padding: 10px; font-size: 0.85em; }
-}
-
 </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📊 گزارش تحلیلی WIP و فروش</h1>
-            <p>تحلیل محصولات با کمبود تولید و عملکرد فروش</p>
-            <p style="font-size: 1.1em; margin-top: 18px;">دوره: شهریور و مهر ۱۴۰۴ | تاریخ گزارش: ۴ آبان ۱۴۰۴</p>
-        </div>
-        
-        <div class="content">
-            <!-- خلاصه اجرایی -->
-            <div class="summary-grid">
-                <div class="summary-card warning">
-                    <h3>محصولات با کمبود</h3>
-                    <div class="value">۳</div>
-                    <div class="label">آخرین مصرف تا ۲۹ مهر</div>
-                </div>
-                
-                <div class="summary-card critical">
-                    <h3>مجموع کمبود</h3>
-                    <div class="value">۹۰۸</div>
-                    <div class="label">عدد</div>
-                </div>
-                
-                <div class="summary-card success">
-                    <h3>مجموع فروش</h3>
-                    <div class="value">۲.۹M</div>
-                    <div class="label">میلیون عدد</div>
-                </div>
-                
-                <div class="summary-card success">
-                    <h3>پرفروش‌ترین</h3>
-                    <div class="value">۳۳۴K</div>
-                    <div class="label">سفیر ۰۶ مشکی</div>
-                </div>
-            </div>
-            
-            <!-- توضیح مهم -->
-            <div class="info-box">
-                <div class="info-box-title">ℹ️ توضیح مهم در مورد این گزارش</div>
-                <p>
-                    این گزارش شامل محصولاتی است که <strong>آخرین مصرفشان تا ۲۹ مهر ۱۴۰۴</strong> بوده و 
-                    <strong>هم مصرف دارند و هم تولید</strong> (محصولات با تولید صفر لحاظ نشده‌اند). 
-                    اختلاف این محصولات حداقل <strong>۱۰ عدد</strong> است که نشان‌دهنده اینکه مصرف از تولید پیشی گرفته است.
-                    <br><br>
-                    <strong>فروش:</strong> آمار فروش برای کل دوره بدون محدودیت تاریخی محاسبه شده است.
+<div class="container">
+<div class="header">
+<h1>📊 گزارش تحلیلی WIP و فروش</h1>
+<p>تحلیل محصولات با کمبود تولید و عملکرد فروش</p>
+<p style="font-size: 1.1em; margin-top: 18px;">دوره: شهریور و مهر ۱۴۰۴ | تاریخ گزارش: ۴ آبان ۱۴۰۴</p>
+</div>
+<div class="content">
+<!-- خلاصه اجرایی -->
+<div class="summary-grid">
+<div class="summary-card warning">
+<h3>محصولات با کمبود</h3>
+<div class="value">۱۲</div>
+<div class="label">آخرین مصرف تا ۲۹ مهر یا بدون تاریخ</div>
+</div>
+<div class="summary-card warning">
+<h3>مجموع کمبود</h3>
+<div class="value">۱,۱۳۱</div>
+<div class="label">عدد</div>
+</div>
+<div class="summary-card success">
+<h3>مجموع فروش</h3>
+<div class="value">۲.۹M</div>
+<div class="label">میلیون عدد</div>
+</div>
+<div class="summary-card success">
+<h3>پرفروش‌ترین</h3>
+<div class="value">۳۳۴K</div>
+<div class="label">سفیر ۰۶ مشکی</div>
+</div>
+</div>
+<!-- توضیح -->
+<div class="info-box">
+<div class="info-box-title">ℹ️ توضیح در مورد این گزارش</div>
+<p>
+                    این گزارش شامل محصولاتی است که <strong>هم مصرف دارند و هم تولید</strong> و 
+                    <strong>اختلافشان حداقل ۱۰ عدد</strong> است. برای فیلتر زمانی:
+                    <br/><br/>
+                    • محصولاتی که <strong>آخرین مصرفشان تا ۲۹ مهر</strong> است<br/>
+                    • یا محصولاتی که <strong>آخرین تاریخ مصرف ثبت نشده</strong> (بدون تاریخ پایانی)<br/>
+                    • <strong>فروش:</strong> برای کل دوره بدون محدودیت
                 </p>
-            </div>
-            
-            <!-- هشدار -->
-            <div class="alert">
-                <div class="alert-title">
-                    <span>⚠️</span>
-                    <span>نکته کلیدی</span>
-                </div>
-                <p>
-                    تعداد کم محصولات با کمبود (۳ محصول) نشان می‌دهد که اکثر محصولات تا ۲۹ مهر به درستی تولید شده‌اند.
-                    این ۳ محصول نیازمند توجه هستند تا در دوره‌های بعد کمبود نداشته باشیم.
-                </p>
-            </div>
-            
-            <!-- جدول محصولات با کمبود -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span class="icon">🔴</span>
-                    <span>محصولات با کمبود (آخرین مصرف تا ۲۹ مهر)</span>
-                </h2>
-                
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ردیف</th>
-                            <th>نام محصول</th>
-                            <th>اولین مصرف</th>
-                            <th>آخرین مصرف</th>
-                            <th>مصرف</th>
-                            <th>تولید</th>
-                            <th>کمبود</th>
-                            <th>WIP</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>۱</td>
-                            <td>سرپایی پسرانه فرانک قهوه‌ای گردویی</td>
-                            <td>۱۴۰۴/۰۶/۰۱</td>
-                            <td>۱۴۰۴/۰۷/۲۷</td>
-                            <td>۵,۸۹۰</td>
-                            <td>۵,۳۰۹</td>
-                            <td class="highlight-red">۵۸۱</td>
-                            <td>۵۸۱</td>
-                        </tr>
-                        <tr>
-                            <td>۲</td>
-                            <td>کفش میانه همیلتون خاکی</td>
-                            <td>۱۴۰۴/۰۶/۲۳</td>
-                            <td>۱۴۰۴/۰۶/۳۰</td>
-                            <td>۱,۳۸۱</td>
-                            <td>۱,۱۳۴</td>
-                            <td class="highlight-red">۲۴۷</td>
-                            <td>۲۴۷</td>
-                        </tr>
-                        <tr>
-                            <td>۳</td>
-                            <td>کفش پسرانه فرنود سفید</td>
-                            <td>۱۴۰۴/۰۶/۰۱</td>
-                            <td>۱۴۰۴/۰۷/۱۲</td>
-                            <td>۴,۱۷۵</td>
-                            <td>۴,۰۹۵</td>
-                            <td class="highlight-red">۸۰</td>
-                            <td>۸۰</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <!-- نمودار -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span class="icon">📊</span>
-                    <span>تحلیل بصری</span>
-                </h2>
-                
-                <div class="chart-container">
-                    <canvas id="shortageChart"></canvas>
-                </div>
-            </div>
-            
-            <!-- جدول محصولات پرفروش -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span class="icon">💰</span>
-                    <span>۱۰ محصول پرفروش (کل دوره)</span>
-                </h2>
-                
-                <table>
-                    <thead>
-                        <tr>
-                            <th>ردیف</th>
-                            <th>نام محصول</th>
-                            <th>فروش</th>
-                            <th>مصرف</th>
-                            <th>تولید</th>
-                            <th>اختلاف</th>
-                            <th>وضعیت</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>۱</td>
-                            <td>کفش مردانه سفیر ۰۶ مشکی</td>
-                            <td class="highlight-green">۳۳۴,۰۳۰</td>
-                            <td>۳۰۷,۴۱۸</td>
-                            <td>۳۳۴,۶۸۵</td>
-                            <td class="highlight-green">-۲۷,۲۶۷</td>
-                            <td><span class="badge badge-success">عالی</span></td>
-                        </tr>
-                        <tr>
-                            <td>۲</td>
-                            <td>سرپایی مردانه آکو مشکی</td>
-                            <td class="highlight-green">۲۵۳,۶۰۲</td>
-                            <td>۲۶۳,۸۱۸</td>
-                            <td>۲۵۵,۰۹۹</td>
-                            <td class="highlight-red">۸,۷۱۹</td>
-                            <td><span class="badge badge-warning">کمبود</span></td>
-                        </tr>
-                        <tr>
-                            <td>۳</td>
-                            <td>سرپایی زنانه کاترینا مشکی</td>
-                            <td class="highlight-green">۱۰۱,۲۳۹</td>
-                            <td>۱۰۳,۵۶۸</td>
-                            <td>۱۰۲,۷۲۱</td>
-                            <td class="highlight-red">۸۴۷</td>
-                            <td><span class="badge badge-warning">کمبود</span></td>
-                        </tr>
-                        <tr>
-                            <td>۴</td>
-                            <td>سرپایی مردانه آکو قهوه‌ای</td>
-                            <td class="highlight-green">۷۵,۹۷۳</td>
-                            <td>۶۹,۷۱۴</td>
-                            <td>۷۶,۱۰۷</td>
-                            <td class="highlight-green">-۶,۳۹۳</td>
-                            <td><span class="badge badge-success">خوب</span></td>
-                        </tr>
-                        <tr>
-                            <td>۵</td>
-                            <td>سرپایی میانه میشیگان مشکی</td>
-                            <td class="highlight-green">۳۵,۳۵۸</td>
-                            <td>۲۹,۶۷۷</td>
-                            <td>۳۵,۶۰۹</td>
-                            <td class="highlight-green">-۵,۹۳۲</td>
-                            <td><span class="badge badge-success">خوب</span></td>
-                        </tr>
-                        <tr>
-                            <td>۶</td>
-                            <td>سرپایی مردانه کوبا۳ مشکی قرمز</td>
-                            <td class="highlight-green">۳۰,۸۷۳</td>
-                            <td>۲۶,۳۹۲</td>
-                            <td>۳۰,۹۱۳</td>
-                            <td class="highlight-green">-۴,۵۲۱</td>
-                            <td><span class="badge badge-success">خوب</span></td>
-                        </tr>
-                        <tr>
-                            <td>۷</td>
-                            <td>سرپایی مردانه برنا عسلی</td>
-                            <td class="highlight-green">۲۹,۶۷۳</td>
-                            <td>۲۸,۷۷۲</td>
-                            <td>۳۰,۰۲۱</td>
-                            <td class="highlight-green">-۱,۲۴۹</td>
-                            <td><span class="badge badge-success">خوب</span></td>
-                        </tr>
-                        <tr>
-                            <td>۸</td>
-                            <td>سرپایی مردانه برنا طوسی</td>
-                            <td class="highlight-green">۲۷,۱۸۶</td>
-                            <td>۲۹,۱۹۹</td>
-                            <td>۲۷,۳۳۷</td>
-                            <td class="highlight-red">۱,۸۶۲</td>
-                            <td><span class="badge badge-warning">کمبود</span></td>
-                        </tr>
-                        <tr>
-                            <td>۹</td>
-                            <td>کفش مردانه آرارات طوسی</td>
-                            <td class="highlight-green">۲۴,۷۵۸</td>
-                            <td>۲۰,۲۶۱</td>
-                            <td>۲۴,۷۶۲</td>
-                            <td class="highlight-green">-۴,۵۰۱</td>
-                            <td><span class="badge badge-success">عالی</span></td>
-                        </tr>
-                        <tr>
-                            <td>۱۰</td>
-                            <td>سرپایی پسرانه اطلس مشکی</td>
-                            <td class="highlight-green">۲۴,۲۲۰</td>
-                            <td>۲۲,۴۶۷</td>
-                            <td>۲۴,۳۵۱</td>
-                            <td class="highlight-green">-۱,۸۸۴</td>
-                            <td><span class="badge badge-success">خوب</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <!-- نمودار محصولات پرفروش -->
-            <div class="section">
-                <div class="chart-container">
-                    <canvas id="salesChart"></canvas>
-                </div>
-            </div>
-            
-            <!-- یافته‌های کلیدی -->
-            <div class="section">
-                <h2 class="section-title">
-                    <span class="icon">🔍</span>
-                    <span>یافته‌های کلیدی و تحلیل</span>
-                </h2>
-                
-                <div class="key-finding">
-                    <h4>۱. وضعیت خوب کنترل تولید</h4>
-                    <p>
-                        تنها <strong>۳ محصول</strong> تا ۲۹ مهر دارای کمبود هستند که نشان می‌دهد 
-                        سیستم کنترل تولید به خوبی عمل کرده است. مجموع کمبود این ۳ محصول 
-                        <strong>۹۰۸ عدد</strong> است که عدد قابل کنترلی محسوب می‌شود.
+</div>
+<!-- جدول محصولات -->
+<div class="section">
+<h2 class="section-title">
+<span>🔴</span>
+<span>۱۲ محصول با کمبود</span>
+</h2>
+<table>
+<thead>
+<tr>
+<th>ردیف</th>
+<th>نام محصول</th>
+<th>اولین مصرف</th>
+<th>آخرین مصرف</th>
+<th>مصرف</th>
+<th>تولید</th>
+<th>کمبود</th>
+<th>WIP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>۱</td>
+<td>سرپایی پسرانه فرانک قهوه‌ای گردویی</td>
+<td>۱۴۰۴/۰۶/۰۱</td>
+<td>۱۴۰۴/۰۷/۲۷</td>
+<td>۵,۸۹۰</td>
+<td>۵,۳۰۹</td>
+<td class="highlight-red">۵۸۱</td>
+<td>۵۸۱</td>
+</tr>
+<tr>
+<td>۲</td>
+<td>کفش میانه همیلتون خاکی</td>
+<td>۱۴۰۴/۰۶/۲۳</td>
+<td>۱۴۰۴/۰۶/۳۰</td>
+<td>۱,۳۸۱</td>
+<td>۱,۱۳۴</td>
+<td class="highlight-red">۲۴۷</td>
+<td>۲۴۷</td>
+</tr>
+<tr>
+<td>۳</td>
+<td>کفش پسرانه فرنود سفید</td>
+<td>۱۴۰۴/۰۶/۰۱</td>
+<td>۱۴۰۴/۰۷/۱۲</td>
+<td>۴,۱۷۵</td>
+<td>۴,۰۹۵</td>
+<td class="highlight-red">۸۰</td>
+<td>۸۰</td>
+</tr>
+<tr>
+<td>۴</td>
+<td>کفش میانه دنیس مشکی طوسی سیر</td>
+<td>۱۴۰۴/۰۷/۰۶</td>
+<td>-</td>
+<td>۵۹۶</td>
+<td>۵۴۱</td>
+<td class="highlight-red">۵۵</td>
+<td>۵۵</td>
+</tr>
+<tr>
+<td>۵</td>
+<td>کفش پسرانه دنیس مشکی طوسی سیر</td>
+<td>۱۴۰۴/۰۶/۱۵</td>
+<td>-</td>
+<td>۵۹۱</td>
+<td>۵۴۵</td>
+<td class="highlight-red">۴۶</td>
+<td>۴۶</td>
+</tr>
+<tr>
+<td>۶</td>
+<td>کفش میانه دنیس طوسی سیر طوسی روشن</td>
+<td>۱۴۰۴/۰۶/۰۲</td>
+<td>-</td>
+<td>۳۵۳</td>
+<td>۳۲۴</td>
+<td class="highlight-red">۲۹</td>
+<td>۲۹</td>
+</tr>
+<tr>
+<td>۷</td>
+<td>کفش میانه دنیس طوسی سیر سفید</td>
+<td>۱۴۰۴/۰۶/۰۲</td>
+<td>-</td>
+<td>۳۵۵</td>
+<td>۳۳۵</td>
+<td class="highlight-red">۲۰</td>
+<td>۲۰</td>
+</tr>
+<tr>
+<td>۸</td>
+<td>سرپایی میانه کلارک قهوه‌ای</td>
+<td>۱۴۰۴/۰۷/۱۴</td>
+<td>-</td>
+<td>۹۰۰</td>
+<td>۸۸۲</td>
+<td class="highlight-red">۱۸</td>
+<td>۱۸</td>
+</tr>
+<tr>
+<td>۹</td>
+<td>کفش پسرانه دنیس طوسی سیر سفید</td>
+<td>۱۴۰۴/۰۶/۲۴</td>
+<td>-</td>
+<td>۳۶۰</td>
+<td>۳۴۲</td>
+<td class="highlight-red">۱۸</td>
+<td>۱۸</td>
+</tr>
+<tr>
+<td>۱۰</td>
+<td>کفش پسرانه دنیس طوسی سیر طوسی روشن</td>
+<td>۱۴۰۴/۰۶/۲۵</td>
+<td>-</td>
+<td>۳۵۲</td>
+<td>۳۳۶</td>
+<td class="highlight-red">۱۶</td>
+<td>۱۶</td>
+</tr>
+<tr>
+<td>۱۱</td>
+<td>کفش مردانه سوپراستار شتری</td>
+<td>۱۴۰۴/۰۶/۱۰</td>
+<td>-</td>
+<td>۵۹۳</td>
+<td>۵۸۲</td>
+<td class="highlight-red">۱۱</td>
+<td>۱۱</td>
+</tr>
+<tr>
+<td>۱۲</td>
+<td>سرپایی مردانه فرشاد شتری</td>
+<td>۱۴۰۴/۰۶/۱۲</td>
+<td>-</td>
+<td>۱,۱۸۷</td>
+<td>۱,۱۷۷</td>
+<td class="highlight-red">۱۰</td>
+<td>۱۰</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- نمودارها -->
+<div class="section">
+<h2 class="section-title">
+<span>📊</span>
+<span>تحلیل بصری</span>
+</h2>
+<div class="chart-container">
+<canvas id="shortageChart"></canvas>
+</div>
+<div class="chart-container">
+<canvas id="categoryChart"></canvas>
+</div>
+</div>
+<!-- محصولات پرفروش -->
+<div class="section">
+<h2 class="section-title">
+<span>💰</span>
+<span>۱۰ محصول پرفروش</span>
+</h2>
+<table>
+<thead>
+<tr>
+<th>ردیف</th>
+<th>نام محصول</th>
+<th>فروش</th>
+<th>مصرف</th>
+<th>تولید</th>
+<th>اختلاف</th>
+<th>وضعیت</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>۱</td>
+<td>کفش مردانه سفیر ۰۶ مشکی</td>
+<td class="highlight-green">۳۳۴,۰۳۰</td>
+<td>۳۰۷,۴۱۸</td>
+<td>۳۳۴,۶۸۵</td>
+<td class="highlight-green">-۲۷,۲۶۷</td>
+<td><span class="badge badge-success">عالی</span></td>
+</tr>
+<tr>
+<td>۲</td>
+<td>سرپایی مردانه آکو مشکی</td>
+<td class="highlight-green">۲۵۳,۶۰۲</td>
+<td>۲۶۳,۸۱۸</td>
+<td>۲۵۵,۰۹۹</td>
+<td class="highlight-red">۸,۷۱۹</td>
+<td><span class="badge badge-warning">کمبود</span></td>
+</tr>
+<tr>
+<td>۳</td>
+<td>سرپایی زنانه کاترینا مشکی</td>
+<td class="highlight-green">۱۰۱,۲۳۹</td>
+<td>۱۰۳,۵۶۸</td>
+<td>۱۰۲,۷۲۱</td>
+<td class="highlight-red">۸۴۷</td>
+<td><span class="badge badge-warning">کمبود</span></td>
+</tr>
+<tr>
+<td>۴</td>
+<td>سرپایی مردانه آکو قهوه‌ای</td>
+<td class="highlight-green">۷۵,۹۷۳</td>
+<td>۶۹,۷۱۴</td>
+<td>۷۶,۱۰۷</td>
+<td class="highlight-green">-۶,۳۹۳</td>
+<td><span class="badge badge-success">خوب</span></td>
+</tr>
+<tr>
+<td>۵</td>
+<td>سرپایی میانه میشیگان مشکی</td>
+<td class="highlight-green">۳۵,۳۵۸</td>
+<td>۲۹,۶۷۷</td>
+<td>۳۵,۶۰۹</td>
+<td class="highlight-green">-۵,۹۳۲</td>
+<td><span class="badge badge-success">خوب</span></td>
+</tr>
+<tr>
+<td>۶</td>
+<td>سرپایی مردانه کوبا۳ مشکی قرمز</td>
+<td class="highlight-green">۳۰,۸۷۳</td>
+<td>۲۶,۳۹۲</td>
+<td>۳۰,۹۱۳</td>
+<td class="highlight-green">-۴,۵۲۱</td>
+<td><span class="badge badge-success">خوب</span></td>
+</tr>
+<tr>
+<td>۷</td>
+<td>سرپایی مردانه برنا عسلی</td>
+<td class="highlight-green">۲۹,۶۷۳</td>
+<td>۲۸,۷۷۲</td>
+<td>۳۰,۰۲۱</td>
+<td class="highlight-green">-۱,۲۴۹</td>
+<td><span class="badge badge-success">خوب</span></td>
+</tr>
+<tr>
+<td>۸</td>
+<td>سرپایی مردانه برنا طوسی</td>
+<td class="highlight-green">۲۷,۱۸۶</td>
+<td>۲۹,۱۹۹</td>
+<td>۲۷,۳۳۷</td>
+<td class="highlight-red">۱,۸۶۲</td>
+<td><span class="badge badge-warning">کمبود</span></td>
+</tr>
+<tr>
+<td>۹</td>
+<td>کفش مردانه آرارات طوسی</td>
+<td class="highlight-green">۲۴,۷۵۸</td>
+<td>۲۰,۲۶۱</td>
+<td>۲۴,۷۶۲</td>
+<td class="highlight-green">-۴,۵۰۱</td>
+<td><span class="badge badge-success">عالی</span></td>
+</tr>
+<tr>
+<td>۱۰</td>
+<td>سرپایی پسرانه اطلس مشکی</td>
+<td class="highlight-green">۲۴,۲۲۰</td>
+<td>۲۲,۴۶۷</td>
+<td>۲۴,۳۵۱</td>
+<td class="highlight-green">-۱,۸۸۴</td>
+<td><span class="badge badge-success">خوب</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- یافته‌ها -->
+<div class="section">
+<h2 class="section-title">
+<span>🔍</span>
+<span>یافته‌های کلیدی</span>
+</h2>
+<div class="key-finding">
+<h4>۱. کمبود متمرکز در دسته کفش</h4>
+<p>
+<strong>۹ محصول</strong> از ۱۲ محصول با کمبود (۷۵٪) از دسته کفش هستند، 
+                        اما مجموع کمبودشان فقط <strong>۵۲۲ عدد</strong> است که میانگین ۵۸ عدد به ازای هر محصول دارد.
                     </p>
-                </div>
-                
-                <div class="key-finding">
-                    <h4>۲. سرپایی فرانک گردویی نیازمند توجه</h4>
-                    <p>
-                        این محصول با <strong>۵۸۱ عدد</strong> کمبود، بیشترین اختلاف را دارد.
-                        آخرین مصرف آن در ۲۷ تیر بوده که نشان می‌دهد این محصول در اواسط دوره 
-                        دچار مشکل شده است.
+</div>
+<div class="key-finding">
+<h4>۲. فرانک گردویی همچنان اولویت</h4>
+<p>
+                        با <strong>۵۸۱ عدد</strong> کمبود، این محصول بیشترین اختلاف را دارد 
+                        و نصف کل کمبود سرپایی را شامل می‌شود.
                     </p>
-                </div>
-                
-                <div class="key-finding">
-                    <h4>۳. عملکرد عالی کفش سفیر ۰۶</h4>
-                    <p>
-                        پرفروش‌ترین محصول با <strong>۳۳۴ هزار</strong> فروش، 
-                        <strong>۲۷ هزار عدد</strong> اضافه تولید دارد که نشان‌دهنده برنامه‌ریزی 
-                        دقیق تولید برای این محصول استراتژیک است.
+</div>
+<div class="key-finding">
+<h4>۳. خانواده دنیس نیازمند توجه</h4>
+<p>
+<strong>۵ محصول</strong> از خانواده دنیس در لیست کمبود قرار دارند اما با اختلاف کم (۱۶ تا ۵۵ عدد) 
+                        که قابل جبران است.
                     </p>
-                </div>
-                
-                <div class="key-finding">
-                    <h4>۴. محصولات پرفروش در خطر</h4>
-                    <p>
-                        <strong>۳ محصول</strong> از ۱۰ محصول پرفروش (آکو مشکی، کاترینا مشکی، برنا طوسی) 
-                        دارای کمبود هستند. این محصولات به دلیل فروش بالا باید در اولویت تولید قرار گیرند.
+</div>
+<div class="key-finding">
+<h4>۴. محصولات بدون تاریخ آخرین مصرف</h4>
+<p>
+<strong>۹ محصول</strong> از ۱۲ محصول آخرین تاریخ مصرف ثبت نشده دارند که 
+                        نشان‌دهنده مصرف‌های جاری یا در حال انجام است.
                     </p>
-                </div>
-                
-                <div class="key-finding">
-                    <h4>۵. تنوع در محصولات کفش</h4>
-                    <p>
-                        ۲ از ۳ محصول با کمبود از دسته کفش هستند (همیلتون خاکی و فرنود سفید) 
-                        با کمبود نسبتا کم (۲۴۷ و ۸۰ عدد). این اعداد قابل جبران در دوره‌های آتی هستند.
-                    </p>
-                </div>
-            </div>
-            
-            <!-- توصیه‌ها -->
-            <div class="recommendations">
-                <h3>💡 توصیه‌ها و اقدامات پیشنهادی</h3>
-                <ul>
-                    <li><strong>جبران کمبود سرپایی فرانک:</strong> با ۵۸۱ عدد کمبود، این محصول باید در اولویت اول تولید قرار گیرد</li>
-                    
-                    <li><strong>نگهداری موجودی محصولات پرفروش:</strong> آکو مشکی و کاترینا مشکی با وجود کمبود، فروش بالایی دارند و باید موجودی کافی داشته باشند</li>
-                    
-                    <li><strong>ادامه روند مثبت:</strong> تعداد کم محصولات با کمبود نشان‌دهنده عملکرد خوب است. این روند باید حفظ شود</li>
-                    
-                    <li><strong>پیش‌بینی تقاضا:</strong> استفاده از داده‌های فروش برای پیش‌بینی بهتر نیاز تولید در ماه‌های آینده</li>
-                    
-                    <li><strong>بازبینی محصولات کفش:</strong> با وجود کمبود کم در ۲ محصول کفش، بررسی فرآیند تولید این دسته توصیه می‌شود</li>
-                    
-                    <li><strong>حفظ اضافه تولید استراتژیک:</strong> محصولات پرفروش مانند سفیر ۰۶ باید همیشه اضافه تولید داشته باشند</li>
-                    
-                    <li><strong>مانیتورینگ هفتگی:</strong> پیگیری هفتگی وضعیت ۳ محصول با کمبود و محصولات پرفروش</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="footer">
-            <p style="font-size: 1.15em; font-weight: 700;">گزارش تهیه شده توسط سیستم تحلیل WIP</p>
-            <p style="margin-top: 12px; opacity: 0.95;">تاریخ: ۹ آبان ۱۴۰۴ | دوره: شهریور و مهر ۱۴۰۴</p>
-            <p style="margin-top: 8px; opacity: 0.75; font-size: 0.95em;">
-                کمبود محصولات براساس آخرین مصرف تا ۲۹ مهر | فروش برای کل دوره
-            </p>
-        </div>
-    </div>
-    
-    <script>
+</div>
+</div>
+<!-- توصیه‌ها -->
+<div class="recommendations">
+<h3>💡 توصیه‌ها و اقدامات</h3>
+<ul>
+<li><strong>اولویت اول:</strong> افزایش تولید سرپایی فرانک گردویی (۵۸۱ عدد)</li>
+<li><strong>بررسی خانواده دنیس:</strong> ۵ محصول با کمبود کم ولی مداوم</li>
+<li><strong>کفش همیلتون:</strong> ۲۴۷ عدد کمبود نیاز به توجه دارد</li>
+<li><strong>ثبت تاریخ آخرین مصرف:</strong> ۹ محصول بدون تاریخ نهایی</li>
+<li><strong>حفظ محصولات پرفروش:</strong> کنترل موجودی برای محصولات استراتژیک</li>
+</ul>
+</div>
+</div>
+<div class="footer">
+<p style="font-size: 1.15em; font-weight: 700;">گزارش تهیه شده توسط سیستم تحلیل WIP</p>
+<p style="margin-top: 12px;">تاریخ: ۴ آبان ۱۴۰۴ | دوره: شهریور و مهر ۱۴۰۴</p>
+</div>
+</div>
+<script>
         Chart.defaults.font.family = 'Vazirmatn';
         
         // نمودار کمبود
@@ -744,67 +669,56 @@
         new Chart(shortageCtx, {
             type: 'bar',
             data: {
-                labels: ['فرانک گردویی', 'همیلتون خاکی', 'فرنود سفید'],
+                labels: ['فرانک گردویی', 'همیلتون خاکی', 'فرنود سفید', 'دنیس مشکی طوسی', 'دنیس پسرانه', 'سایر (۷ محصول)'],
                 datasets: [{
                     label: 'کمبود (عدد)',
-                    data: [581, 247, 80],
+                    data: [581, 247, 80, 55, 46, 122],
                     backgroundColor: [
-                        'rgba(239, 68, 68, 0.85)',
-                        'rgba(251, 146, 60, 0.85)',
-                        'rgba(252, 211, 77, 0.85)'
+                        'rgba(220, 38, 38, 0.9)',
+                        'rgba(239, 68, 68, 0.9)',
+                        'rgba(248, 113, 113, 0.9)',
+                        'rgba(251, 146, 60, 0.9)',
+                        'rgba(251, 191, 36, 0.9)',
+                        'rgba(163, 230, 53, 0.9)'
                     ],
-                    borderColor: [
-                        'rgb(220, 38, 38)',
-                        'rgb(234, 88, 12)',
-                        'rgb(245, 158, 11)'
-                    ],
-                    borderWidth: 3
+                    borderColor: 'rgb(220, 38, 38)',
+                    borderWidth: 2
                 }]
             },
             options: {
                 responsive: true,
                 plugins: {
-                    legend: {
-                        display: false
-                    },
+                    legend: { display: false },
                     title: {
                         display: true,
-                        text: 'محصولات با کمبود (تا ۲۹ مهر)',
-                        font: {
-                            size: 18,
-                            weight: 'bold',
-                            family: 'Vazirmatn'
-                        },
-                        padding: { bottom: 25 }
+                        text: 'توزیع کمبود براساس محصول',
+                        font: { size: 18, weight: 'bold', family: 'Vazirmatn' }
                     }
                 },
                 scales: {
                     y: {
                         beginAtZero: true,
-                        ticks: {
-                            font: { family: 'Vazirmatn', size: 13 }
-                        }
+                        ticks: { font: { family: 'Vazirmatn' } }
                     },
                     x: {
-                        ticks: {
-                            font: { family: 'Vazirmatn', size: 13 }
-                        }
+                        ticks: { font: { family: 'Vazirmatn', size: 11 } }
                     }
                 }
             }
         });
         
-        // نمودار فروش
-        const salesCtx = document.getElementById('salesChart').getContext('2d');
-        new Chart(salesCtx, {
-            type: 'bar',
+        // نمودار دسته
+        const categoryCtx = document.getElementById('categoryChart').getContext('2d');
+        new Chart(categoryCtx, {
+            type: 'doughnut',
             data: {
-                labels: ['سفیر ۰۶', 'آکو مشکی', 'کاترینا', 'آکو قهوه‌ای', 'میشیگان', 'کوبا۳', 'برنا عسلی', 'برنا طوسی', 'آرارات', 'اطلس'],
+                labels: ['کفش (۹ محصول)', 'سرپایی (۳ محصول)'],
                 datasets: [{
-                    label: 'فروش (هزار عدد)',
-                    data: [334, 254, 101, 76, 35, 31, 30, 27, 25, 24],
-                    backgroundColor: 'rgba(16, 185, 129, 0.85)',
-                    borderColor: 'rgb(5, 150, 105)',
+                    data: [522, 609],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.9)',
+                        'rgba(239, 68, 68, 0.9)'
+                    ],
                     borderWidth: 3
                 }]
             },
@@ -812,30 +726,13 @@
                 responsive: true,
                 plugins: {
                     legend: {
-                        display: false
+                        position: 'bottom',
+                        labels: { font: { family: 'Vazirmatn', size: 14 } }
                     },
                     title: {
                         display: true,
-                        text: '۱۰ محصول پرفروش (کل دوره)',
-                        font: {
-                            size: 18,
-                            weight: 'bold',
-                            family: 'Vazirmatn'
-                        },
-                        padding: { bottom: 25 }
-                    }
-                },
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        ticks: {
-                            font: { family: 'Vazirmatn', size: 13 }
-                        }
-                    },
-                    x: {
-                        ticks: {
-                            font: { family: 'Vazirmatn', size: 12 }
-                        }
+                        text: 'توزیع کمبود براساس دسته',
+                        font: { size: 18, weight: 'bold', family: 'Vazirmatn' }
                     }
                 }
             }
